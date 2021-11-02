@@ -16,7 +16,7 @@ import lombok.Data;
 
 public class Admin  extends User{
 	@Column(name="right")
-	 private String right;
+	 private String right;	
 	
 }
 

@@ -1,18 +1,23 @@
 package com.tekup.Immobilisation.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
-
+@Entity
 @Table(name="users")
 @Data
-@MappedSuperclass
+@Inheritance(strategy= InheritanceType.JOINED)
 public class User {
 	 
 	@Id
@@ -30,6 +35,7 @@ public class User {
 	 
 	 @Column(name="password")
 	 private String password;
+	
 	 
 }
 
