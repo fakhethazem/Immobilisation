@@ -23,8 +23,8 @@ import lombok.EqualsAndHashCode;
 @Embeddable
 public class VisitKey implements Serializable  {
 	@Column(name = "id_user")
-     private int userId;
+     private Integer userId;
 
     @Column(name = "id_annonce")
-     private   int annonceId;
+     private   Integer annonceId;
 }

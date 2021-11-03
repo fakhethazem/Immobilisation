@@ -24,7 +24,7 @@ public class Adresse  {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_adresse")
-	 private int id_adresse ;
+	 private Integer id_adresse ;
 	@Column(name="gouvernorat" , length=55 , nullable=false)
 	 private String gouvernorat ;
 	@Column(name="ville")
