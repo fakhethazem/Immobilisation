@@ -24,17 +24,16 @@ import lombok.Data;
 @Data
 
 public class Visit   {
+	
 	   @EmbeddedId
 	      private VisitKey visitKey;
-
  
 	    @ManyToOne
-	    @MapsId("userId")
-	    @JoinColumn(name = "id_user" , insertable = false , updatable = false)
+	    @MapsId("clientId")
+	    @JoinColumn(name = "id_client" , insertable = false , updatable = false)
 	    Client client;
 	      
-
-	    @ManyToOne
+        @ManyToOne
 	    @MapsId("annonceId")
 	    @JoinColumn(name = "id_annonce", insertable = false , updatable = false)
 	      Annonce annonce;
