@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +18,11 @@ import javax.persistence.Table;
 
 import org.hibernate.boot.model.relational.Database;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="Visit")
@@ -30,16 +35,16 @@ public class Visit   {
  
 	    @ManyToOne
 	    @MapsId("clientId")
-	    @JoinColumn(name = "id_client" , insertable = false , updatable = false)
+	    @JoinColumn(name = "id_client" )
 	    Client client;
 	      
-        @ManyToOne
+        @ManyToOne(fetch = FetchType.EAGER)
 	    @MapsId("annonceId")
-	    @JoinColumn(name = "id_annonce", insertable = false , updatable = false)
+	    @JoinColumn(name = "id_annonce")
 	      Annonce annonce;
 	    
 	    @Column(name="date_visite")
-	    private LocalDate date_visite;
+	    private String date_visite;
 	    
 	    @Column(name="frais")
 	    private float frais;

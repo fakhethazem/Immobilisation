@@ -55,10 +55,10 @@ public   class Client {
 	            private String birthdaydate;
 	   
       @OneToMany (mappedBy = "client_ann")
-      @JsonIgnore
+      @JsonManagedReference
 	            List<Annonce> annonces;
          
-         @OneToMany(mappedBy = "client")
+         @OneToMany(mappedBy = "client",cascade = CascadeType.REMOVE)
          @JsonIgnore
                 List<Visit> visits;
 

@@ -54,9 +54,10 @@ public class Annonce  {
 	 
 	 @ManyToOne
 	 @JoinColumn(name = "id_client", referencedColumnName = "id_client")
+	 @JsonBackReference
 	 Client client_ann;
 	
-	 @OneToOne
+	 @OneToOne(cascade = CascadeType.REMOVE)
 	 @JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse")
 	 private Adresse adresse;
 	 
