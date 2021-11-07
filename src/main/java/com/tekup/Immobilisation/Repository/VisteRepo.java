@@ -12,7 +12,7 @@ import com.tekup.Immobilisation.entities.Visit;
 import com.tekup.Immobilisation.entities.VisitKey;
 
 @Repository
-public interface VisteRepo  extends CrudRepository<Visit, VisitKey>{
-	 public List<Visit>  findByVisitKeyClientId(Integer clientid);
+public interface VisteRepo  extends JpaRepository<Visit, VisitKey>{
+	 public List<Visit>  findByVisitKeyAnnonceId(Integer clientid);
 	
 }

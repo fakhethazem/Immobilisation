@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import org.hibernate.boot.model.relational.Database;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -36,11 +37,13 @@ public class Visit   {
 	    @ManyToOne
 	    @MapsId("clientId")
 	    @JoinColumn(name = "id_client" )
+	    @JsonBackReference(value="visit-client")
 	    Client client;
 	      
-        @ManyToOne(fetch = FetchType.EAGER)
+        @ManyToOne
 	    @MapsId("annonceId")
 	    @JoinColumn(name = "id_annonce")
+        @JsonBackReference(value="visit-annonce")
 	      Annonce annonce;
 	    
 	    @Column(name="date_visite")

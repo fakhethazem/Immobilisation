@@ -54,14 +54,14 @@ public class Annonce  {
 	 
 	 @ManyToOne
 	 @JoinColumn(name = "id_client", referencedColumnName = "id_client")
-	 @JsonBackReference
 	 Client client_ann;
 	
 	 @OneToOne(cascade = CascadeType.REMOVE)
 	 @JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse")
 	 private Adresse adresse;
 	 
-	 @OneToMany(mappedBy = "annonce",cascade = CascadeType.ALL)
+	 @OneToMany(mappedBy = "annonce",cascade = CascadeType.REMOVE)
+	 @JsonManagedReference(value="visit-annonce")
 	    List<Visit> visits;
 
 	public Integer getId_annonce() {

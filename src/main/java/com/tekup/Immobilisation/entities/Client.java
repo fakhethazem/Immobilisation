@@ -51,15 +51,16 @@ public   class Client {
 	     @Column(name="numberphone")
 	           private String numberphone;
 	     
+	     
 	     @Column(name="birthdaydate")
 	            private String birthdaydate;
 	   
       @OneToMany (mappedBy = "client_ann")
-      @JsonManagedReference
+      @JsonIgnore
 	            List<Annonce> annonces;
          
          @OneToMany(mappedBy = "client",cascade = CascadeType.REMOVE)
-         @JsonIgnore
+         @JsonManagedReference(value="visit-client")
                 List<Visit> visits;
 
 		public Integer getId_client() {

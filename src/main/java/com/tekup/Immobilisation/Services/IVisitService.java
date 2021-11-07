@@ -13,6 +13,5 @@ public Iterable<Visit> getAllVisits();
 public Visit createVisit(Visit visit);
 public Visit getVisitById(VisitKey id);
 public Visit updateVisit(VisitKey id, Visit visit);
-public List<Visit> getAllVisitsbyemedded(Integer clientid);
-
+public List<Visit> getAllVisitsbyemedded(Integer annonceid);
 }

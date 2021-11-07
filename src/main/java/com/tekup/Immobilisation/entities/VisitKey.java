@@ -53,4 +53,10 @@ public class VisitKey implements Serializable  {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	public VisitKey(@NonNull Integer clientId, @NonNull Integer annonceId) {
+		super();
+		this.clientId = clientId;
+		this.annonceId = annonceId;
+	}
 }

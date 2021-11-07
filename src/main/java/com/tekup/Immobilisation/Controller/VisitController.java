@@ -50,7 +50,6 @@ public Visit getOnefromDB(@PathVariable VisitKey id){
 }
 
 
-
 @PostMapping("/Visits")
 public Visit saveToDB(@RequestBody Visit visit) {
 	return visitServiceImp.createVisit(visit);
@@ -70,7 +69,7 @@ public ResponseEntity<String> handleNoSuchElementException(NoSuchElementExceptio
 	//return new ResponseEntity<String>("Error in Employee : " + e.getMessage()
 	//										, HttpStatus.BAD_REQUEST);
 	return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-						 .body("Error in client : " + e.getMessage());
+						 .body("Error in visit : " + e.getMessage());
 }
 
 }

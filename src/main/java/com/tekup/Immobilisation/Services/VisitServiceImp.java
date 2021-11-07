@@ -50,7 +50,8 @@ public Visit updateVisit(VisitKey id, Visit newvisit) {
 }
 
 @Override
-public List<Visit> getAllVisitsbyemedded(Integer clientid) {
-	return visiteRepo.findByVisitKeyClientId(clientid);
+public List<Visit> getAllVisitsbyemedded(Integer annonceid) {
+	return visiteRepo.findByVisitKeyAnnonceId(annonceid);
 }
+
 }
