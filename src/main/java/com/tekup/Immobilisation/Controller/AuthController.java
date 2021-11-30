@@ -20,16 +20,7 @@ public class AuthController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	 
-    @GetMapping("/index")
-    public String viewHomePage() {
-        return "index";
-    }
-    
-    @GetMapping("/")
-    public String login() {
-        return "login";
-    }
-    
+
     @PostMapping("/authenticate")
     public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
     	try {authenticationManager.authenticate(

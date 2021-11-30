@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.tekup.Immobilisation.Services.IClientParticulierService;
 import com.tekup.Immobilisation.Services.IClientProfessionelService;
@@ -26,11 +28,18 @@ import lombok.AllArgsConstructor;
 @RestController
 @AllArgsConstructor
 public class ClientProfessionelController {
-
+	
+	
 @Autowired
 private IClientProfessionelService clientproServiceImp;
 
 
+/*
+@GetMapping("/clients/test")
+public List<ProClient> getAll(){
+	return clientproServiceImp.addproClient();
+}
+ */
 @GetMapping("/clients/professionel")
 public List<ProClient> getAllfromDB(){
 	return clientproServiceImp.getAllPartClient();
@@ -44,10 +53,10 @@ public ProClient getOnefromDB(@PathVariable int id){
 
 
 
-@PostMapping("/clients/professionel")
-public ProClient saveToDB(@RequestBody ProClient client) {
+@PostMapping("/clients/professionel/{id}")
+public ProClient saveToDB(@PathVariable Integer id) {
 	//call of service
-	return clientproServiceImp.createPartClient(client);
+	return clientproServiceImp.createProClient(id);
 }
 
 

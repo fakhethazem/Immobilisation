@@ -1,26 +1,45 @@
 package com.tekup.Immobilisation.Services;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import java.util.Optional;
 import java.util.NoSuchElementException;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.tekup.Immobilisation.Repository.ClientParticulierRepo;
 import com.tekup.Immobilisation.Repository.ClientProfessionelRepo;
 import com.tekup.Immobilisation.Repository.ClientRepo;
+import com.tekup.Immobilisation.Repository.ClientTempRepo;
 import com.tekup.Immobilisation.entities.Client;
+import com.tekup.Immobilisation.entities.ClientTemp;
+import com.tekup.Immobilisation.entities.ParticulierClient;
 import com.tekup.Immobilisation.entities.ProClient;
 
-import lombok.AllArgsConstructor;
+
 
 @Service
 public class ClientProfessionelServiceImp implements IClientProfessionelService  {
-   @Autowired
+	
+	@Autowired
+	    private JavaMailSender javaMailSender;
+    @Autowired
    private ClientProfessionelRepo clientProfessionelRepo;
+   @Autowired
+   private ClientTempRepo clientTempRepo;
+   
 
 @Override
 public List<ProClient> getAllPartClient() {
@@ -67,10 +86,60 @@ public ProClient deletePartClient(int id) {
 }
 
 @Override
-public ProClient createPartClient(ProClient client) {
-	return clientProfessionelRepo.save(client);
+public ProClient createProClient(int id) {
+	ClientTemp clienttemp=clientTempRepo.getById(id);
+	ProClient proClient = new ProClient();
+	proClient.setId_client(clienttemp.getId_clienttemp());
+	proClient.setName(clienttemp.getName());
+	proClient.setLastName(clienttemp.getLastName());
+	proClient.setEmail(clienttemp.getEmail());
+	proClient.setPassword(clienttemp.getPassword());
+	proClient.setBirthdaydate(clienttemp.getBirthdaydate());
+	proClient.setNumberphone(clienttemp.getNumberphone());
+	sendEmail(proClient);
+	clientTempRepo.deleteById(id);
+	return clientProfessionelRepo.save(proClient);
+	
+	
 }
 
+public void sendEmail(ProClient pro)
+{
+	SimpleMailMessage mail = new SimpleMailMessage();
+	mail.setFrom("imobilisationservice@gmail.com");
+	mail.setTo(pro.getEmail());
+	mail.setSubject("your account has been created");
+	mail.setText("Hello....your account has been created as profesionel client");
+
+	javaMailSender.send(mail);
+}
+/*
+@Override
+public List<ProClient> addproClient(String name) {
+	 List<ProClient> listo =new ArrayList <>();
+	ClientDto  cdo = null;
+	ProClient pro =null;
+	String clienturl="http://127.0.0.1:8080/register";
+	ModelMapper mapper = new ModelMapper();
+	ResponseEntity<List<ClientDto>> responseEntity = 
+			  restTemplate.exchange(
+			    clienturl,
+			    HttpMethod.GET,
+			    null,
+			    new ParameterizedTypeReference<List<ClientDto>>() {}
+			  );
+			List<ClientDto> clients = responseEntity.getBody();
+	 for (ClientDto cd : clients) {
+		 if(cd.getName()==name) {
+			 cdo=cd;
+		 }
+	 }
+	 pro = mapper.map(cdo, ProClient.class);
+	 listo.add(pro);
+	return  listo;
+
+}
+*/
 
 
 }

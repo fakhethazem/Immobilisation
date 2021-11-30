@@ -9,7 +9,7 @@ import com.tekup.Immobilisation.entities.ProClient;
 public interface IClientProfessionelService {
 	
 public List<ProClient> getAllPartClient();
-public ProClient createPartClient(ProClient client);
+public ProClient createProClient(int id);
 public ProClient getPartClientById(int id);
 public ProClient updatePartClient(int id, ProClient client);
 public ProClient deletePartClient(int id);

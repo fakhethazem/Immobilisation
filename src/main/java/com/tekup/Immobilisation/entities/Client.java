@@ -33,7 +33,7 @@ import lombok.Data;
 public   class Client {
 	 
 		 @Id
-		 @GeneratedValue(strategy=GenerationType.AUTO)
+		 
 		      private Integer id_client;
 		 
 		 @Column(name="name" , length=55)
