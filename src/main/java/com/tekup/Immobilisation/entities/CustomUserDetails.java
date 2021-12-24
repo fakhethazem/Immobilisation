@@ -31,7 +31,7 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return client.getName();
+		return client.getEmail();
 	}
 
 	@Override

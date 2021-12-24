@@ -11,6 +11,8 @@ import com.tekup.Immobilisation.entities.ParticulierClient;
 public interface ClientRepo  extends JpaRepository<Client, Integer>{
 	
 	 Client findByName(String name);
+	 Client findByEmail(String email);
+	 
 
 }
 

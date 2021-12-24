@@ -15,7 +15,7 @@ public class MyclientDetailService implements UserDetailsService {
 	    private ClientRepo clientRepo;
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Client client = clientRepo.findByName(username);
+		Client client = clientRepo.findByEmail(username);
         if (client == null) {
             throw new UsernameNotFoundException("client not found");
         }
