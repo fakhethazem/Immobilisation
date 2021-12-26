@@ -14,9 +14,26 @@ import lombok.Data;
 @Table(name="admin")
 @Data
 
-public class Admin  extends User{
-	@Column(name="right")
-	 private String right;	
+public class Admin{
+	 
+		 @Id
+		 @GeneratedValue(strategy=GenerationType.AUTO)
+		  private Integer id_admin;
+		 
+		 @Column(name="name" , length=55 , nullable=false)
+		 private String name;
+		 
+		 @Column(name="lastName" , length=55 , nullable=false)
+		 private String lastName;
+		 
+		 @Column(name="email" , length=55 , nullable=false) 
+		 private String email;
+		 
+		 @Column(name="password")
+		 private String password;
+		
+	     @Column(name="right")
+	      private String right;	
 	
 }
 

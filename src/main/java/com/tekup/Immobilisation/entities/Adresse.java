@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Entity
@@ -21,17 +23,23 @@ import lombok.Data;
 @Data
 
 public class Adresse  {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_adresse")
-	 private int id_adresse ;
-	@Column(name="gouvernorat" , length=55 , nullable=false)
+	 private Integer id_adresse ;
+	
+	@Column(name="gouvernorat" , length=55 )
 	 private String gouvernorat ;
+	
 	@Column(name="ville")
 	 private String ville ;
+	
 	@Column(name="adresse_det")
 	 private String adresse_det ;
+	
 	 @OneToOne(mappedBy = "adresse")
+	 @JsonIgnore
       private Annonce annonce;
 	
 

@@ -21,12 +21,19 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="proclient")
-@Data
-/*@DiscriminatorValue("professionel")*/
+@DiscriminatorValue("professionel")
 public class ProClient  extends Client{
 	@Column(name="commission")
 	 private float commission;
+
+	public float getCommission() {
+		return commission;
+	}
+
+	public void setCommission(float commission) {
+		this.commission = commission;
+	}
+	
 	
 }
 

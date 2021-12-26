@@ -18,9 +18,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="particulierclient")
-@Data
-/*@DiscriminatorValue("particulier")*/
+@DiscriminatorValue("particulier")
 public class ParticulierClient  extends Client{
 	
 	
