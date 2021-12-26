@@ -40,8 +40,11 @@ public class Annonce  {
 	@Column(name="description" , length=55 , nullable=false)
 	 private String description_an ;
 	
-	@Column(name="date_an")
-	 private String date_an ;
+	@Column(name="name")
+	 private String name ;
+	
+	@Column(name="roomsnumb")
+	 private String roomsnumb ;
 	
 	@Column(name="categorie_an")
 	 private String categorie_an ;
@@ -51,6 +54,9 @@ public class Annonce  {
 	
 	@Column(name="price")
 	 private float price ;
+	
+	@Column(name="image")
+	private String image;
 	 
 	 @ManyToOne
 	 @JoinColumn(name = "id_client", referencedColumnName = "id_client")
@@ -80,12 +86,14 @@ public class Annonce  {
 		this.description_an = description_an;
 	}
 
-	public String getDate_an() {
-		return date_an;
+	
+
+	public String getRoomsnumb() {
+		return roomsnumb;
 	}
 
-	public void setDate_an(String date_an) {
-		this.date_an = date_an;
+	public void setRoomsnumb(String roomsnumb) {
+		this.roomsnumb = roomsnumb;
 	}
 
 	public String getCategorie_an() {
@@ -98,6 +106,23 @@ public class Annonce  {
 
 	public String getType_an() {
 		return type_an;
+	}
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public void setType_an(String type_an) {

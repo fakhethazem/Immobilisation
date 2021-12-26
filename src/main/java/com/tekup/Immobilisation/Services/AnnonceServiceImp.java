@@ -42,8 +42,8 @@ public Annonce updateAnnonce(int id, Annonce newAnnonce) {
 	Annonce annonce=getAnnonceById(id);
 	if(newAnnonce.getDescription_an()!=null)
 		annonce.setDescription_an(newAnnonce.getDescription_an());
-	if(newAnnonce.getDate_an()!=null)
-		annonce.setDate_an(newAnnonce.getDate_an());
+	if(newAnnonce.getRoomsnumb()!=null)
+		annonce.setRoomsnumb(newAnnonce.getRoomsnumb());
 	if(newAnnonce.getCategorie_an()!=null)
 		annonce.setCategorie_an(newAnnonce.getCategorie_an());
 	if(newAnnonce.getType_an()!=null)
