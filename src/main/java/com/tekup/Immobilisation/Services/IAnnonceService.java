@@ -11,6 +11,6 @@ public interface IAnnonceService {
 public List<Annonce> getAllAnnonces();
 public Annonce createAnnonce(Annonce annonce);
 public Annonce getAnnonceById(int id);
-public Annonce updateAnnonce(int id, Annonce newClient);
+//public Annonce updateAnnonce(int id, Annonce newClient);
 public Annonce deleteAnnonce(int id);
 }

@@ -37,7 +37,7 @@ public class Visit   {
 	    @ManyToOne
 	    @MapsId("clientId")
 	    @JoinColumn(name = "id_client" )
-	    @JsonBackReference(value="visit-client")
+	   
 	    Client client;
 	      
         @ManyToOne

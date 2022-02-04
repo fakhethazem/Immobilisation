@@ -72,12 +72,12 @@ public Annonce saveToDB(@RequestBody Annonce annonce) {
 	return annonceServiceImp.createAnnonce(annonce);
 }
 
-
+/*
 @PutMapping("/annonces/{id}")
 public Annonce updateOnefromDB(@PathVariable int id,@RequestBody Annonce annonce){
 	return annonceServiceImp.updateAnnonce(id, annonce);
 }
-
+*/
 
 @DeleteMapping("/annonces/{id}")
 public Annonce deleteOnefromDB(@PathVariable int id){

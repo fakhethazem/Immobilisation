@@ -12,6 +12,10 @@ public class CustomUserDetails implements UserDetails {
 	private Client client;
 	
 
+	
+	  public Client getUser() {
+	        return client;
+	    }
 	public CustomUserDetails(Client client) {
 		this.client = client;
 	}

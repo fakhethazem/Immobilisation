@@ -5,13 +5,15 @@ import java.util.Optional;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.tekup.Immobilisation.Repository.AnnonceRepo;
 import com.tekup.Immobilisation.Repository.ClientRepo;
 import com.tekup.Immobilisation.entities.Annonce;
 import com.tekup.Immobilisation.entities.Client;
-import com.tekup.Immobilisation.entities.ParticulierClient;
+import com.tekup.Immobilisation.entities.CustomUserDetails;
 
 import lombok.AllArgsConstructor;
 
@@ -20,7 +22,8 @@ import lombok.AllArgsConstructor;
 public class AnnonceServiceImp implements IAnnonceService  {
    @Autowired
    private AnnonceRepo annonceRepo;
-
+   private ClientRepo clientRepo;
+   
 @Override
 public List<Annonce> getAllAnnonces() {
 	return annonceRepo.findAll();
@@ -36,7 +39,7 @@ public Annonce getAnnonceById(int id) {
 	Optional<Annonce> opt = annonceRepo.findById(id);
 	return opt.orElseThrow(()->new NoSuchElementException("Annonce with this id is not found"));
 }
-
+/*
 @Override
 public Annonce updateAnnonce(int id, Annonce newAnnonce) {
 	Annonce annonce=getAnnonceById(id);
@@ -58,7 +61,7 @@ public Annonce updateAnnonce(int id, Annonce newAnnonce) {
     	  annonce.setVisits(newAnnonce.getVisits());
 	 return annonceRepo.save(annonce);
 }
-
+*/
 @Override
 public Annonce deleteAnnonce(int id) {
 	Annonce annonce = getAnnonceById(id);

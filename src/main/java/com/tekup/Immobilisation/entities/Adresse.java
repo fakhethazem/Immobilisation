@@ -38,9 +38,9 @@ public class Adresse  {
 	@Column(name="adresse_det")
 	 private String adresse_det ;
 	
-	 @OneToOne(mappedBy = "adresse")
+	/* @OneToOne(mappedBy = "adresse")
 	 @JsonIgnore
-      private Annonce annonce;
+      private Annonce annonce;*/
 	
 
 }

@@ -11,4 +11,5 @@ public Client createClient(Client client);
 public Client getClientById(int id);
 public Client updateClient(int id, Client newClient);
 public Client deleteClient(int id);
+public Client findByEmail(String email);
 }

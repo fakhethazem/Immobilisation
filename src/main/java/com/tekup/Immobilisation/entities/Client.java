@@ -61,8 +61,8 @@ public   class Client {
       @JsonIgnore
 	            List<Annonce> annonces;
          
-         @OneToMany(mappedBy = "client",cascade = CascadeType.REMOVE)
-         @JsonManagedReference(value="visit-client")
+         @OneToMany(mappedBy = "client")
+         @JsonIgnore
                 List<Visit> visits;
 
 	

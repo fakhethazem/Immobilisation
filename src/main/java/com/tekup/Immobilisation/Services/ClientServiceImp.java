@@ -63,6 +63,11 @@ public Client deleteClient(int id) {
 	return client;
 }
 
+@Override
+public Client findByEmail(String email) {
+	Client client = clientRepo.findByEmail(email);
+	return client;
+}
 
 
    

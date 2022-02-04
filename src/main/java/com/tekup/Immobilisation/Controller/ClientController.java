@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClientController {
 
 @Autowired
@@ -34,12 +36,17 @@ public List<Client> getAllfromDB(){
 	return clientServiceImp.getAllClient();
 }
 
-
+/*
 @GetMapping("/clients/{id}")
 public Client getOnefromDB(@PathVariable int id){
 	return clientServiceImp.getClientById(id);
-}
+}*/
 
+
+@GetMapping("/clients/{email}")
+public Client getClientByEmail(@PathVariable String email){
+	return clientServiceImp.findByEmail(email);
+}
 
 
 @PostMapping("/clients")
