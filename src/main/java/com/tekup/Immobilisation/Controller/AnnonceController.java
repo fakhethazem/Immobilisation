@@ -67,7 +67,7 @@ public Annonce getOnefromDB(@PathVariable int id){
 
 
 
-@PostMapping("/annonces")
+@PostMapping("/api/annonces")
 public Annonce saveToDB(@RequestBody Annonce annonce) {
 	return annonceServiceImp.createAnnonce(annonce);
 }
